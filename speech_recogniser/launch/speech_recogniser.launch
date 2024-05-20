@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<launch>
+  <node pkg="speech_recogniser" name="recogniser" type="recogniser.py"
+        output="screen" clear_params="true">
+  </node>
+  <node pkg="speech_recogniser" name="response" type="response.py"
+        output="screen" clear_params="true">
+  </node>
+  <node pkg="speech_recogniser" name="streamer" type="streamer.py"
+        output="screen" clear_params="true">
+  </node>
+  <node pkg="speech_recogniser" name="lift_head" type="lift_head.py"
+        output="screen" clear_params="true">
+  </node>
+  <node pkg="speech_recogniser" name="sentiment_analysis" type="sentiment_analysis.py"
+        output="screen" clear_params="true">
+  </node>
+</launch>
+
+
