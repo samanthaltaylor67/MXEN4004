@@ -18,7 +18,7 @@ This repo contains all code to achieve conversational functionality with MiRo us
 
 •	*sentiment_analysis* – Exhibit the sentiment of the users input using the array of lights on either side of MiRo’s body.
 
-•	*point_to_sound* – Pivot to reposition MiRo’s body to point towards the speaker. This is only node that is not run through the roslaunch command, use ```rosrun miro_active_hearing point_to_sound.py``` in a new terminal.
+•	*point_to_sound* – Pivot to reposition MiRo’s body to point towards the speaker*. This is only node that is not run through the roslaunch command, use ```rosrun miro_active_hearing point_to_sound.py``` in a new terminal.
 
 
 **Usage**
@@ -28,7 +28,13 @@ Using Ubuntu 20.04 and python 3.8.10,
 Use the following guide to install the MDK: http://labs.consequentialrobotics.com/miro-e/docs/index.php?page=Developer_Install_Steps_Install_MDK
 
 The MDK was extracted to the Desktop, and the miro_active_hearing and speech_recogniser were installed into mdk-XXXXXX/catkin_ws
-```cd ~/mdk/catkin_ws/src
+```
+cd ~/mdk/catkin_ws/src
 git clone https://github.com/samanthaltaylor67/MXEN4004.git
 catkin build
 source devel/setup.bash
+```
+
+
+
+*All credit for this node is owed to Yijing Chen, Akhil Makeswaran, Glen Palm and Alex Lucas - https://github.com/MiRo-projects/miro_active_hearing
