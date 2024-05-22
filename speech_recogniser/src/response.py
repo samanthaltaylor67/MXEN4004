@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Author: Samantha Taylor
-# Purpose: Initialises response node to generate a response to the users input using ChatGPT-4.
+# Purpose: Initialises response node to generate a response to the users input using OpenAI's ChatGPT-4.
 # Institution: Curtin University
 # Unit: MXEN4004 - Mechatronic Engineering Research Project II
 # Date: Semester 2, 2024
