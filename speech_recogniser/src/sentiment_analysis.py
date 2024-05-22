@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+
+# Author: Samantha Taylor
+# Purpose: Initialises sentiment_analysis node to command illumination LEDs according to sentiment (happy, angry, sad or other).
+# Institution: Curtin University
+# Unit: MXEN4004 - Mechatronic Engineering Research Project II
+# Date: Semester 2, 2024
+
 import rospy
 from std_msgs.msg import UInt32MultiArray, String, Bool
 import os
