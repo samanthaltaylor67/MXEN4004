@@ -1,5 +1,11 @@
 #!/usr/bin/python3
 
+# Author: Samantha Taylor
+# Purpose: Initialises recogniser node to listen through the MiRo microphone for speech.
+# Institution: Curtin University
+# Unit: MXEN4004 - Mechatronic Engineering Research Project II
+# Date: Semester 2, 2024
+
 import rospy
 from std_msgs.msg import UInt16MultiArray, Int16MultiArray, String, Bool
 import std_msgs
