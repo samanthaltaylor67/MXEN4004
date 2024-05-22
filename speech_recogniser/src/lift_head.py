@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+
+# Author: Samantha Taylor
+# Purpose: Initialises lift_head node to lift and lower head as conversation begins and ends, respectively.
+# Institution: Curtin University
+# Unit: MXEN4004 - Mechatronic Engineering Research Project II
+# Date: Semester 2, 2024
+
 import rospy
 from std_msgs.msg import Bool
 from sensor_msgs.msg import JointState
