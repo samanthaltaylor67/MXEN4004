@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Author: Samantha Taylor
-# Purpose: Initialises streamer node to stream spoken text through the MiRo Microphone.
+# Purpose: Initialises streamer node to stream spoken text through the MiRo speakers.
 # Institution: Curtin University
 # Unit: MXEN4004 - Mechatronic Engineering Research Project II
 # Date: Semester 2, 2024
