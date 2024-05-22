@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 
+# Author: Samantha Taylor
+# Purpose: Initialises streamer node to stream spoken text through the MiRo Microphone.
+# Institution: Curtin University
+# Unit: MXEN4004 - Mechatronic Engineering Research Project II
+# Date: Semester 2, 2024
+
 import time
 import sys
 import os
@@ -35,6 +41,12 @@ MIC_SAMPLE_RATE = 20000
 TRACK_FILE = "tts_response.wav"
 
 TRACK_PATH = os.path.join(os.getcwd(), TRACK_FILE)
+
+# amount to keep the buffer stuffed - larger numbers mean
+# less prone to dropout, but higher latency when we stop
+# streaming. with a read-out rate of 8k, 2000 samples will
+# buffer for quarter of a second, for instance.
+BUFFER_STUFF_BYTES = 4000
 
 ################################################################
 
