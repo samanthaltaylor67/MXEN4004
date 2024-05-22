@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 # Author: Samantha Taylor
-# Purpose: Initialises recogniser node to listen through the MiRo microphone for speech.
+# Purpose: Initialises recogniser node to listen through the MiRo's right ear microphone for speech.
 # Institution: Curtin University
 # Unit: MXEN4004 - Mechatronic Engineering Research Project II
 # Date: Semester 2, 2024
