@@ -42,14 +42,8 @@ BUFFER_MARGIN = 1000
 BUFFER_MAX = BUFFER_STUFF_SAMPLES + BUFFER_MARGIN
 BUFFER_MIN = BUFFER_STUFF_SAMPLES - BUFFER_MARGIN
 
-# how long to record before playing back in seconds?
-RECORD_TIME = 2
-
 # microphone sample rate (also available at miro2.constants)
 MIC_SAMPLE_RATE = 20000
-
-# sample count
-SAMPLE_COUNT = RECORD_TIME * MIC_SAMPLE_RATE
 
 # amount to keep the buffer stuffed - larger numbers mean
 # less prone to dropout, but higher latency when we stop
@@ -358,6 +352,18 @@ class client:
                 x = np.reshape(self.outbuf[:,1], (-1))
                 for s in x:
                     file.writeframes(struct.pack('<h', s))
+
+                # Get the number of frames in the file
+                num_frames = file.getnframes()
+
+                # Get the frame rate (already defined as MIC_SAMPLE_RATE)
+                frame_rate = MIC_SAMPLE_RATE
+
+                # Calculate the duration in seconds
+                duration = num_frames / frame_rate
+
+                # Print the duration
+                print(f"Duration of user_speech.wav: {duration:.2f}")
 
                 # Close file
                 file.close()
