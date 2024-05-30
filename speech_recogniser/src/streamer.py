@@ -71,11 +71,12 @@ class streamer:
 
     def callback_response(self, data):
         response = data.data
+        engine = pyttsx3.init()
 
         # Write string response to speech - TTS
         responsefile = os.path.join(os.getcwd(), TRACK_FILE)
-        self.engine.save_to_file(response, responsefile)
-        self.engine.runAndWait()
+        engine.save_to_file(response, responsefile)
+        engine.runAndWait()
 
         file = TRACK_PATH + ".decode"
         # Decode wav
@@ -91,7 +92,7 @@ class streamer:
         with open(file, 'rb') as f:
             dat = f.read()
         data_r = 0
-
+        os.remove(responsefile + ".decode")
         # Convert to numpy array
         dat = np.fromstring(dat, dtype='int16').astype(np.int32)
 
@@ -112,15 +113,14 @@ class streamer:
 
         # Loop
         while not rospy.core.is_shutdown():
-
             # Check state_file
             if not state_file is None:
                 if not os.path.isfile(state_file):
                     break
 
+
             # If we've received a report
             if self.buffer_total > 0:
-
                 # Compute amount to send
                 buffer_rem = self.buffer_total - self.buffer_space
                 n_bytes = BUFFER_STUFF_BYTES - buffer_rem
@@ -141,7 +141,7 @@ class streamer:
             if count == 0:
                 count = 10
 
-                # Check at those moments if we are making progress, also
+                # check at those moments if we are making progress, also
                 if dropout_data_r == data_r:
                     if dropout_count == 0:
                         print("dropping out because of no progress...")
@@ -155,8 +155,6 @@ class streamer:
             count -= 1
             time.sleep(0.1)
 
-        time.sleep(0.5)
-        os.remove(responsefile + ".decode")
 
         # Restart the microphone
         self.pub_conversing.publish(False)
@@ -166,6 +164,11 @@ class streamer:
             frames = f.getnframes()
             rate = f.getframerate()
             self.wavlength = frames / float(rate)
+
+        self.buffer_space = 0
+        self.buffer_total = 0
+        engine.stop()
+
     def callback_killall(self, data):
         # Kill streamer node
         if data.data:
@@ -194,7 +197,7 @@ class streamer:
         self.sub_log = rospy.Subscriber(topic, String, self.callback_log, queue_size=5, tcp_nodelay=True)
 
         topic = topic_base_name + "/sensors/stream"
-        self.sub_stream = rospy.Subscriber(topic, UInt16MultiArray, self.callback_stream, queue_size=1,
+        self.sub_stream = rospy.Subscriber(topic, UInt16MultiArray, self.callback_stream, queue_size=10,
                                            tcp_nodelay=True)
 
         # Text to Speech #
@@ -204,9 +207,6 @@ class streamer:
         # Subscribers
         rospy.Subscriber('/speech_recogniser/response', String, self.callback_response)
         rospy.Subscriber('/speech_recogniser/end_conversation', Bool, self.callback_killall)
-
-        # Initialisation of text to speech
-        self.engine = pyttsx3.init()
 
 if __name__ == "__main__":
     streamer = streamer()
