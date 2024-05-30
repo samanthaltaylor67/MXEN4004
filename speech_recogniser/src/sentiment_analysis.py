@@ -34,6 +34,7 @@ class sentiment_analysis:
         self.front_left, self.mid_left, self.rear_left, self.front_right, self.mid_right, self.rear_right = range(6)
         self.illum = UInt32MultiArray()
         self.illum.data = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF]
+        self.pub_illum.publish(self.illum)
 
     def callback_killall(self, data):
         # Kill sentiment_analysis node
