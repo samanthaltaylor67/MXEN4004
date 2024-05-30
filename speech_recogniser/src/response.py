@@ -22,7 +22,7 @@ class response:
         # Response Generation #
         load_dotenv()
         openai.api_key = os.getenv("OPENAI_API_KEY")
-        self.gpt_model = "gpt-4"
+        self.gpt_model = "gpt-4o"
 
         # Stores the system context
         personalityFile = "/personality.txt"
@@ -86,8 +86,8 @@ class response:
 
             self.messages.append({"role": "assistant", "content": response})
 
-            print("[MiRo]: " + str(response))
-            #print("Response generated in {0:.5f}s".format(end - start))
+            print("\n[MiRo]: " + str(response))
+            print("Response generated in {0:.5f}".format(end - start))
 
             self.pub_response.publish(response)
 
